@@ -1,0 +1,24 @@
+%p#notice= notice
+%h1 Tasks
+%table
+  %thead
+    %tr
+      %th User
+      %th Title
+      %th Decription
+      %th Due date at
+      %th Status
+      %th{:colspan => "3"}
+  %tbody
+    - @tasks.each do |task|
+      %tr
+        %td= task.user
+        %td= task.title
+        %td= task.decription
+        %td= task.due_date_at
+        %td= task.status
+        %td= link_to 'Show', task
+        %td= link_to 'Edit', edit_task_path(task)
+        %td= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Task', new_task_path
